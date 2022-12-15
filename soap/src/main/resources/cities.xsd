@@ -1,0 +1,77 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="city">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="country_id" type="xs:int"/>
+            <xs:element name="city_name" type="xs:string"/>
+            <xs:element name="population" type="xs:int"/>
+            <xs:element name="is_capital" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

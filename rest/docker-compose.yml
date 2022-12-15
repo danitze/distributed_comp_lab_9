@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  ds-project-server:
+    container_name: distributed-comp-lab-9
+    image: "back-end/countries.jar"
+    build: back-end/distributed-comp-lab-9.jar
+    depends_on:
+      - distributed-comp-lab-9-db
+    env_file:
+      - .env
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://distributed-comp-lab-9-db:${DB_PORT}/${DB_NAME}"
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      PORT: ${APP_LOCAL_PORT}
+    ports:
+      - ${APP_LOCAL_PORT}:${APP_EXTERNAL_PORT}
+
+  ds-project-db:
+    container_name: distributed-comp-lab-9-db
+    image: postgres:14-alpine3.14
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
